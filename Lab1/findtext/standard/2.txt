@@ -1,0 +1,3 @@
+Error input data! You should enter 3 arguments !
+findtext.exe <file name> <text to search>
+example: findtext.exe input.txt Fox  
