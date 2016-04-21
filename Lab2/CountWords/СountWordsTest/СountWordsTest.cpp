@@ -18,10 +18,10 @@ BOOST_AUTO_TEST_CASE(should_return_empty_string_from_empty_input_string)
 BOOST_AUTO_TEST_CASE(should_return_occurrence_of_words_from__input_string)
 {
 	std::string inputString;
-	inputString = "Are you study English?";
+	inputString = "Do you study English?";
 	std::map <std::string, size_t> expectedMap
 	{	
-		{"Are", 1}, 
+		{"Do", 1}, 
 		{ "English", 1 },
 		{ "study", 1 },
 		{ "you", 1 },
@@ -31,10 +31,10 @@ BOOST_AUTO_TEST_CASE(should_return_occurrence_of_words_from__input_string)
 BOOST_AUTO_TEST_CASE(should_return_occurrence_of_words_from__input_string_with_delimiter)
 {
 	std::string inputString;
-	inputString = "Are? you. study          () English?";
+	inputString = "Do? you. study          () English?";
 	std::map <std::string, size_t> expectedMap
 	{
-		{ "Are", 1 },
+		{ "Do", 1 },
 		{ "English", 1 },
 		{ "study", 1 },
 		{ "you", 1 },
