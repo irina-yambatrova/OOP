@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include <iostream>
 #include <map>
 #include <string>
@@ -15,7 +15,7 @@ using namespace std;
 std::string ReadInputData()
 {
 	string inputString;
-	cout << "Ââåäèòå ñòðîêó  " << endl;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑÑ‚Ñ€Ð¾ÐºÑƒ  " << endl;
 	getline(cin, inputString);
 	boost::transform(inputString, inputString.begin(), tolower);
 	return inputString;
@@ -47,7 +47,7 @@ std::map<std::string, size_t> CountOccurrenceOfWords(string &words)
 
 void PrintNumberOfWords(map<std::string, size_t> &frequencyOfOccurrence)
 {
-	cout << "âõîæäåíèå êàæäîãî ñëîâà: " << endl;
+	cout << "Ð²Ñ…Ð¾Ð¶Ð´ÐµÐ½Ð¸Ðµ ÐºÐ°Ð¶Ð´Ð¾Ð³Ð¾ ÑÐ»Ð¾Ð²Ð°: " << endl;
 	for (auto iter : frequencyOfOccurrence)
 	{
 		cout << iter.first << " -> " << (iter.second) << endl;
