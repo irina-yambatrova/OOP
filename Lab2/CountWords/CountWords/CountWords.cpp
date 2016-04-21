@@ -17,7 +17,7 @@ std::string ReadInputData()
 	string inputString;
 	cout << "Введите строку  " << endl;
 	getline(cin, inputString);
-	boost::transform(inputString, inputString.begin(), tolower);
+	
 	return inputString;
 }
 
@@ -35,6 +35,7 @@ void RemoveDividers(string &inputString)
 
 std::map<std::string, size_t> CountOccurrenceOfWords(string &words)
 {
+	boost::transform(words, words.begin(), tolower);
 	RemoveDividers(words);
 	std::map <std::string, size_t> frequencyOfOccurrence; 
 	stringstream inputString(words);
