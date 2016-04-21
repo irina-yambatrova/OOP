@@ -9,7 +9,6 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/range/algorithm/transform.hpp>
 
-
 using namespace std;
 
 std::string ReadInputData()
@@ -17,7 +16,6 @@ std::string ReadInputData()
 	string inputString;
 	cout << "Введите строку  " << endl;
 	getline(cin, inputString);
-	
 	return inputString;
 }
 
