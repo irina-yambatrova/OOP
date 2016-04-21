@@ -6,6 +6,10 @@
 #include <iomanip>
 #include <Windows.h>
 #include <set>
+#include <boost/algorithm/string.hpp>
+#include <boost/range/algorithm/transform.hpp>
+
+
 using namespace std;
 
 std::string ReadInputData()
@@ -13,6 +17,7 @@ std::string ReadInputData()
 	string inputString;
 	cout << "¬ведите строку  " << endl;
 	getline(cin, inputString);
+	boost::transform(inputString, inputString.begin(), tolower);
 	return inputString;
 }
 
