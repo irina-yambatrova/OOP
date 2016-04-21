@@ -9,37 +9,44 @@
 
 BOOST_AUTO_TEST_SUITE(CountOccurrenceOfWords_function)
 
-BOOST_AUTO_TEST_CASE(should_return_empty_string_from_empty_input_string)
-{
-	std::string inputString;
-	std::map <std::string, size_t> expectedMap;
-	BOOST_CHECK(expectedMap == CountOccurrenceOfWords(inputString));
-}
-BOOST_AUTO_TEST_CASE(should_return_occurrence_of_words_from__input_string)
-{
-	std::string inputString;
-	inputString = "Do you study English?";
-	std::map <std::string, size_t> expectedMap
-	{	
-		{"Do", 1}, 
-		{ "English", 1 },
-		{ "study", 1 },
-		{ "you", 1 },
-	};
-	BOOST_CHECK(expectedMap == CountOccurrenceOfWords(inputString));
-}
-BOOST_AUTO_TEST_CASE(should_return_occurrence_of_words_from__input_string_with_delimiter)
-{
-	std::string inputString;
-	inputString = "Do? you. study          () English?";
-	std::map <std::string, size_t> expectedMap
+	BOOST_AUTO_TEST_CASE(should_return_empty_string_from_empty_input_string)
 	{
-		{ "Do", 1 },
-		{ "English", 1 },
-		{ "study", 1 },
-		{ "you", 1 },
-	};
-	BOOST_CHECK(expectedMap == CountOccurrenceOfWords(inputString));
-}
+		std::string inputString;
+		std::map <std::string, size_t> expectedMap;
+		BOOST_CHECK(expectedMap == CountOccurrenceOfWords(inputString));
+	}
+	BOOST_AUTO_TEST_CASE(should_return_occurrence_of_words_from__input_string_without_delimiter)
+	{
+		std::map <std::string, size_t> expectedMap
+		{
+			{ "Do", 1 },
+			{ "English", 1 },
+			{ "study", 1 },
+			{ "you", 1 },
+		};
+		BOOST_CHECK(expectedMap == CountOccurrenceOfWords(std::string("Do you study English")));
+	}
+	BOOST_AUTO_TEST_CASE(should_return_occurrence_of_words_from__input_string)
+	{
+		std::map <std::string, size_t> expectedMap
+		{	
+			{"Do", 1}, 
+			{ "English", 1 },
+			{ "study", 1 },
+			{ "you", 1 },
+		};
+		BOOST_CHECK(expectedMap == CountOccurrenceOfWords(std::string("Do, you, study English?")));
+	}
+	BOOST_AUTO_TEST_CASE(should_return_occurrence_of_words_from__input_string_with_delimiter)
+	{
+		std::map <std::string, size_t> expectedMap
+		{
+			{ "Do", 1 },
+			{ "English", 1 },
+			{ "study", 1 },
+			{ "you", 2 },
+		};
+		BOOST_CHECK (expectedMap == CountOccurrenceOfWords(std::string("Do? you. you study          () English?")));
+	}
 BOOST_AUTO_TEST_SUITE_END()
 
