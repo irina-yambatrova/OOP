@@ -13,16 +13,16 @@ using namespace std;
 
 std::string ReadInputData()
 {
-	string inputString;
-	cout << "Введите строку  " << endl;
-	getline(cin, inputString);
-	return inputString;
+	string inputText ;
+	cout << "Введите строку, по окончании введите end  " << endl;
+	getline(cin, inputText);
+	return inputText;
 }
 
-void RemoveDividers(string &inputString)
+void RemoveDividers(string &inputText)
 {
 	set<char> delimiter{'.',':',',',';','(',')','-','?','!'};
-	for (auto &ch : inputString)
+	for (auto &ch : inputText)
 	{
 		if (delimiter.count(ch) != 0)
 		{
@@ -30,6 +30,7 @@ void RemoveDividers(string &inputString)
 		}
 	}
 }
+
 
 std::map<std::string, size_t> CountOccurrenceOfWords(string &words)
 {
