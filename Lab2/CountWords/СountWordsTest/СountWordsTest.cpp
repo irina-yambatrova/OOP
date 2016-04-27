@@ -9,7 +9,7 @@
 
 BOOST_AUTO_TEST_SUITE(CountOccurrenceOfWords_function)
 
-	BOOST_AUTO_TEST_CASE(should_return_empty_string_from_empty_input_string)
+	BOOST_AUTO_TEST_CASE(should_make_empty_map_from_empty_input_string)
 	{
 		std::string inputString;
 		std::map <std::string, size_t> expectedMap;
@@ -26,7 +26,7 @@ BOOST_AUTO_TEST_SUITE(CountOccurrenceOfWords_function)
 		};
 		BOOST_CHECK(expectedMap == CountOccurrenceOfWords(std::string("Do you study English")));
 	}
-	BOOST_AUTO_TEST_CASE(should_return_occurrence_of_words_from__input_string)
+	BOOST_AUTO_TEST_CASE(should_return_occurrence_of_words_from__input_string_with_one_word)
 	{
 		std::map <std::string, size_t> expectedMap
 		{	
