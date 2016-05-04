@@ -31,21 +31,22 @@ void RemoveDividers(string &inputText)
 	}
 }
 
-
-std::map<std::string, size_t> CountOccurrenceOfWords(string &words)
+std::map<std::string, size_t> CountOccurrenceOfWords(const string &words)
 {
-	boost::transform(words, words.begin(), tolower);
-	RemoveDividers(words);
+	string wordsCopy = words;
+	boost::transform(wordsCopy, wordsCopy.begin(), tolower);
+	RemoveDividers(wordsCopy);
 	std::map <std::string, size_t> frequencyOfOccurrence; 
-	stringstream inputString(words);
-	while (inputString >> words)
+	stringstream inputString(wordsCopy);
+	string word;
+	while (inputString >> word)
 	{
-		frequencyOfOccurrence[words]++;
+		frequencyOfOccurrence[word]++;
 	}
 	return frequencyOfOccurrence;
 }
 
-void PrintNumberOfWords(map<std::string, size_t> &frequencyOfOccurrence)
+void PrintNumberOfWords(const map<std::string, size_t> &frequencyOfOccurrence)
 {
 	cout << "вхождение каждого слова: " << endl;
 	for (auto iter : frequencyOfOccurrence)
