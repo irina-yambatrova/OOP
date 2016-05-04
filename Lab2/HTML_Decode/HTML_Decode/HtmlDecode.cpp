@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include <iostream>
 #include <boost/algorithm/string/replace.hpp>
 #include <string>
@@ -9,7 +9,7 @@ using namespace std;
 std::string ReadInputData()
 {
 	string text;
-	cout << "Ââåäèòå ñòðîêó, ïî îêîí÷àíèè ââåäèòå end  " << endl;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑÑ‚Ñ€Ð¾ÐºÑƒ, Ð¿Ð¾ Ð¾ÐºÐ¾Ð½Ñ‡Ð°Ð½Ð¸Ð¸ Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ end  " << endl;
 	getline(cin, text);
 	return text;
 }
@@ -17,8 +17,7 @@ std::string ReadInputData()
 std::string HtmlDecode(std::string const& html)
 {
 	string htmlDecodeText = html;
-	//string encodeText;
-	if (htmlDecodeText.length() != 0)
+	if (html.length() != 0)
 	{
 		boost::replace_all(htmlDecodeText, "&quot;", "\"");
 		boost::replace_all(htmlDecodeText, "&apos;", "'");
@@ -31,6 +30,6 @@ std::string HtmlDecode(std::string const& html)
 
 void PrintOuputText(string const&  htmlDecodeText)
 {
-	cout <<"Äåêîäèðîâàííûé html-òåêñò" <<htmlDecodeText <<endl;
+	cout <<"Ð”ÐµÐºÐ¾Ð´Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ html-Ñ‚ÐµÐºÑÑ‚ " << htmlDecodeText <<endl;
 }
 
