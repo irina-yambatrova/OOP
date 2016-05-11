@@ -6,15 +6,15 @@
 #include "VectorProcessor.h"
 #include "VectorProcessor.h"
 
-int _tmain()
+int main()
 {
 	setlocale(LC_ALL, "Russian");
 	SetConsoleOutputCP(1251);
 	SetConsoleCP(1251);
 	vector<double> numbers;
-	std::cout << "Введите числа через пробел,по окончании нажмите ,  " << endl;
+	std::cout << "Введите числа через пробел. по окончании введите , и Enter  " << endl;
 	numbers = ReadInputDataInVector();
-	DivideNumberByHalfMaxVector(numbers);
+	ProcessVector(numbers);
 	SortVector(numbers);
 	PrintVector(numbers);
 	return 0;
