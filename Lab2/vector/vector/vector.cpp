@@ -12,7 +12,7 @@ int _tmain()
 	SetConsoleOutputCP(1251);
 	SetConsoleCP(1251);
 	vector<double> numbers;
-	std::cout << "Введите числа через пробел, по окончании нажмите , + enter  " << endl;
+	std::cout << "Введите числа через пробел, по окончании нажмите ,  " << endl;
 	numbers = ReadInputDataInVector();
 	DivideNumberByHalfMaxVector(numbers);
 	std::sort(numbers.begin(), numbers.end());
