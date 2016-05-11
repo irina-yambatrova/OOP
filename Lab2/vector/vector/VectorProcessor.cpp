@@ -19,18 +19,17 @@ void DivideNumberByHalfMaxVector(vector<double> & numbers)
 		double halfOfMax = max / 2;
 		boost::transform(numbers, numbers.begin(), [halfOfMax](double number)
 		{
-			double dividedNumberOfHalfMax = number / halfOfMax;
-			return dividedNumberOfHalfMax;
+			return number / halfOfMax;
 		});
 	}
 }
+
 void SortVector(vector<double> & numbers)
 {
-	std::sort(numbers.begin(), numbers.end());
+	std::sort(numbers.begin(),  numbers.end());
 }
 
 void PrintVector(vector<double> const& numbers)
 {
 	boost::copy(numbers, ostream_iterator<double>(cout, " "));
-	cout << endl;
 }
