@@ -24,6 +24,10 @@ void DivideNumberByHalfMaxVector(vector<double> & numbers)
 		});
 	}
 }
+void SortVector(vector<double> & numbers)
+{
+	std::sort(numbers.begin(), numbers.end());
+}
 
 void PrintVector(vector<double> const& numbers)
 {
