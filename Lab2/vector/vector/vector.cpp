@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include <vector>
 #include <iostream>
 #include <algorithm> 
@@ -12,7 +12,7 @@ int _tmain()
 	SetConsoleOutputCP(1251);
 	SetConsoleCP(1251);
 	vector<double> numbers;
-	std::cout << "Ââåäèòå ÷èñëà ÷åðåç ïðîáåë, ïî îêîí÷àíèè íàæìèòå , + enter  " << endl;
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ‡Ð¸ÑÐ»Ð° Ñ‡ÐµÑ€ÐµÐ· Ð¿Ñ€Ð¾Ð±ÐµÐ», Ð¿Ð¾ Ð¾ÐºÐ¾Ð½Ñ‡Ð°Ð½Ð¸Ð¸ Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ , + enter  " << endl;
 	numbers = ReadInputDataInVector();
 	DivideNumberByHalfMaxVector(numbers);
 	std::sort(numbers.begin(), numbers.end());
