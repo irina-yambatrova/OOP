@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "VectorProcessor.h"
-#include <boost/range/algorithm/transform.hpp>
-#include <boost/range/algorithm/copy.hpp>
+#include <iostream>
 #include <iterator>
 #include <algorithm> 
-#include <iostream>
+#include <boost/range/algorithm/transform.hpp>
+#include <boost/range/algorithm/copy.hpp>
 
 vector<double> ReadInputDataInVector()
 {
