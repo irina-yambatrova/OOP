@@ -9,50 +9,44 @@ using namespace std;
 
 int SIZE_ARRAY = 3;
 
-vector<std::vector<double>> GetFirstArrayFromFile(const string & inputFirstFile)
+vector<std::vector<double>> GetFirstArrayFromFile(const string & inputFile)
 {
-	ifstream inputFirstMatrix(inputFirstFile);
+	ifstream inputFirstMatrix(inputFile);
+	ifstream inputSecondMatrix(inputFile);
 	vector<vector<double>> firstArray(SIZE_ARRAY);
+	vector<vector<double>> secondArray(SIZE_ARRAY);
 	for (size_t x = 0; x < SIZE_ARRAY; ++x)
 	{
 		firstArray[x].resize(SIZE_ARRAY);
+		secondArray[x].resize(SIZE_ARRAY);
 		for (size_t y = 0; y < SIZE_ARRAY; ++y)
 		{
 			double number = 0;
 			inputFirstMatrix >> number;
 			firstArray[x][y] = number;
-		}
-	}
-	return firstArray;
-}
-vector<vector<double>> GetSecondArrayFromFile(const string & inputSecondFile)
-{
-	ifstream inputSecondMatrix(inputSecondFile);
-	vector<vector<double>> secondArray(SIZE_ARRAY);
-	for (size_t x = 0; x < SIZE_ARRAY; ++x)
-	{
-		secondArray[x].resize(SIZE_ARRAY);
-		for (size_t y = 0; y < SIZE_ARRAY; ++y)
-		{
-			double number = 0;
 			inputSecondMatrix >> number;
 			secondArray[x][y] = number;
 		}
 	}
+	return firstArray;
 	return secondArray;
 }
 
 vector<vector<double>> MultiplicationOfMatrix(const string & inputFirstFile, const string & inputSecondFile)
 {
-	vector<vector<double>> resultMatrix = { { 0,0,0 }, { 0,0,0 }, { 0,0,0 } };
-	vector<vector<double>> firstMatrix = GetFirstArrayFromFile(inputFirstFile);
-	vector<vector<double>> secondMatrix = GetSecondArrayFromFile(inputSecondFile);
-
-	for (int row = 0; row < SIZE_ARRAY; row++)
+	vector<vector<double>> resultMatrix(3);
+	for (auto & it : resultMatrix)
 	{
-		for (int column = 0; column < SIZE_ARRAY; column++)
+		it.resize(3);
+	}
+	vector<vector<double>> firstMatrix = GetFirstArrayFromFile(inputFirstFile);
+	vector<vector<double>> secondMatrix = GetFirstArrayFromFile(inputSecondFile);
+
+	for (size_t row = 0; row < SIZE_ARRAY; row++)
+	{
+		for (size_t column = 0; column < SIZE_ARRAY; column++)
 		{
-			for (int inner = 0; inner < SIZE_ARRAY; inner++)
+			for (size_t inner = 0; inner < SIZE_ARRAY; inner++)
 			{
 				resultMatrix[row][column] += firstMatrix[row][inner] * secondMatrix[inner][column];
 			}
@@ -61,7 +55,7 @@ vector<vector<double>> MultiplicationOfMatrix(const string & inputFirstFile, con
 	return resultMatrix;
 }
 
-void PrintMatrix(vector<vector<double>> & resultMatrix)
+void PrintMatrix(const vector<vector<double>> & resultMatrix)
 {
 	for (auto it1 : resultMatrix)
 	{

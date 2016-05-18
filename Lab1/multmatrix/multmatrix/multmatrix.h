@@ -4,7 +4,6 @@
 
 using namespace std;
 
-vector<vector<double>> GetFirstArrayFromFile(const string & inputFirstFile);
-vector<vector<double>> GetSecondArrayFromFile(const string & inputSecondFile);
+vector<std::vector<double>> GetFirstArrayFromFile(const string & inputFile);
 vector<vector<double>> MultiplicationOfMatrix(const string & inputFirstFile, const string & inputSecondFile);
-void PrintMatrix(vector<vector<double>> & resultMatrix);
+void PrintMatrix(const vector<vector<double>> & resultMatrix);
