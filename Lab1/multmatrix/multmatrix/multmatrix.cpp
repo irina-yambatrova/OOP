@@ -13,6 +13,7 @@ vector<vector<double>> GetArrayFromFile(const string & nameOfFile)
 {
 	ifstream inputFile(nameOfFile);
 	vector<vector<double>> array(SIZE_ARRAY);
+
 	if (!inputFile.is_open())
 	{
 		cout << "File not found";
@@ -32,13 +33,15 @@ vector<vector<double>> GetArrayFromFile(const string & nameOfFile)
 
 vector<vector<double>> MultiplicationOfMatrix(const string & inputFirstFile, const string & inputSecondFile)
 {
-	vector<vector<double>> resultMatrix(3);
+	vector<vector<double>> resultMatrix(SIZE_ARRAY);
 	for (auto & it : resultMatrix)
 	{
 		it.resize(SIZE_ARRAY);
 	}
+
 	vector<vector<double>> firstMatrix = GetArrayFromFile(inputFirstFile);
 	vector<vector<double>> secondMatrix = GetArrayFromFile(inputSecondFile);
+
 	for (size_t row = 0; row < SIZE_ARRAY; row++)
 	{
 		for (size_t column = 0; column < SIZE_ARRAY; column++)
