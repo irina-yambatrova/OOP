@@ -9,11 +9,11 @@ using namespace std;
 
 size_t SIZE_ARRAY = 3;
 
-vector<vector<double>> GetFirstArrayFromFile(const string & inputFirstFile)
+vector<vector<double>> GetArrayFromFile(const string & nameOfFile)
 {
-	ifstream inputFirstMatrix(inputFirstFile);
+	ifstream inputFile(nameOfFile);
 	vector<vector<double>> firstArray(SIZE_ARRAY);
-	if (!inputFirstMatrix.is_open())
+	if (!inputFile.is_open())
 	{
 		cout << "File not found";
 	}
@@ -23,31 +23,11 @@ vector<vector<double>> GetFirstArrayFromFile(const string & inputFirstFile)
 		for (size_t y = 0; y < SIZE_ARRAY; ++y)
 		{
 			double number = 0.0;
-			inputFirstMatrix >> number;
+			inputFile >> number;
 			firstArray[x][y] = number;
 		}
 	}
 	return firstArray;
-}
-vector<vector<double>> GetSecondArrayFromFile(const string & inputSecondFile)
-{
-	ifstream inputSecondMatrix(inputSecondFile);
-	vector<vector<double>> secondArray(SIZE_ARRAY);
-	if (!inputSecondMatrix.is_open())
-	{
-		cout<<"File nod found";
-	}
-	for (size_t x = 0; x < SIZE_ARRAY; ++x)
-	{
-		secondArray[x].resize(SIZE_ARRAY);
-		for (size_t y = 0; y < SIZE_ARRAY; ++y)
-		{
-			double number = 0.0;
-			inputSecondMatrix >> number;
-			secondArray[x][y] = number;
-		}
-	}
-	return secondArray;
 }
 
 vector<vector<double>> MultiplicationOfMatrix(const string & inputFirstFile, const string & inputSecondFile)
@@ -55,18 +35,17 @@ vector<vector<double>> MultiplicationOfMatrix(const string & inputFirstFile, con
 	vector<vector<double>> resultMatrix(3);
 	for (auto & it : resultMatrix)
 	{
-		it.resize(3);
+		it.resize(SIZE_ARRAY);
 	}
-	vector<vector<double>> firstMatrix = GetFirstArrayFromFile(inputFirstFile);
-	vector<vector<double>> secondMatrix = GetFirstArrayFromFile(inputSecondFile);
-
+	vector<vector<double>> firstMatrix = GetArrayFromFile(inputFirstFile);
+	vector<vector<double>> secondMatrix = GetArrayFromFile(inputSecondFile);
 	for (size_t row = 0; row < SIZE_ARRAY; row++)
 	{
 		for (size_t column = 0; column < SIZE_ARRAY; column++)
 		{
-			for (size_t number = 0; number < SIZE_ARRAY; number++)
+			for (size_t element = 0; element < SIZE_ARRAY; element++)
 			{
-				resultMatrix[row][column] += firstMatrix[row][number] * secondMatrix[number][column];
+				resultMatrix[row][column] += firstMatrix[row][element] * secondMatrix[element][column];
 			}
 		}
 	}

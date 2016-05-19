@@ -3,9 +3,7 @@
 #include <fstream>
 #include <vector>
 
-using namespace std;
 
-vector<vector<double>> GetFirstArrayFromFile(const string & inputFirstFile);
-vector<vector<double>> GetSecondArrayFromFile(const string & inputSecondFile);
-vector<vector<double>> MultiplicationOfMatrix(const string & inputFirstFile, const string & inputSecondFile);
-void PrintMatrix(const vector<vector<double>> & resultMatrix);
+std::vector<std::vector<double>> GetArrayFromFile(const std::string & nameOfFile);
+std::vector<std::vector<double>> MultiplicationOfMatrix(const std::string & inputFirstFile, const std::string & inputSecondFile);
+void PrintMatrix(const std::vector<std::vector<double>> & resultMatrix);
