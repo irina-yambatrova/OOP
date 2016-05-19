@@ -7,28 +7,46 @@
 #include "multmatrix.h"
 using namespace std;
 
-int SIZE_ARRAY = 3;
+size_t SIZE_ARRAY = 3;
 
-vector<std::vector<double>> GetFirstArrayFromFile(const string & inputFile)
+vector<vector<double>> GetFirstArrayFromFile(const string & inputFirstFile)
 {
-	ifstream inputFirstMatrix(inputFile);
-	ifstream inputSecondMatrix(inputFile);
+	ifstream inputFirstMatrix(inputFirstFile);
 	vector<vector<double>> firstArray(SIZE_ARRAY);
-	vector<vector<double>> secondArray(SIZE_ARRAY);
+	if (!inputFirstMatrix.is_open())
+	{
+		cout << "File not found";
+	}
 	for (size_t x = 0; x < SIZE_ARRAY; ++x)
 	{
 		firstArray[x].resize(SIZE_ARRAY);
+		for (size_t y = 0; y < SIZE_ARRAY; ++y)
+		{
+			double number = 0.0;
+			inputFirstMatrix >> number;
+			firstArray[x][y] = number;
+		}
+	}
+	return firstArray;
+}
+vector<vector<double>> GetSecondArrayFromFile(const string & inputSecondFile)
+{
+	ifstream inputSecondMatrix(inputSecondFile);
+	vector<vector<double>> secondArray(SIZE_ARRAY);
+	if (!inputSecondMatrix.is_open())
+	{
+		cout<<"File nod found";
+	}
+	for (size_t x = 0; x < SIZE_ARRAY; ++x)
+	{
 		secondArray[x].resize(SIZE_ARRAY);
 		for (size_t y = 0; y < SIZE_ARRAY; ++y)
 		{
-			double number = 0;
-			inputFirstMatrix >> number;
-			firstArray[x][y] = number;
+			double number = 0.0;
 			inputSecondMatrix >> number;
 			secondArray[x][y] = number;
 		}
 	}
-	return firstArray;
 	return secondArray;
 }
 
@@ -46,9 +64,9 @@ vector<vector<double>> MultiplicationOfMatrix(const string & inputFirstFile, con
 	{
 		for (size_t column = 0; column < SIZE_ARRAY; column++)
 		{
-			for (size_t inner = 0; inner < SIZE_ARRAY; inner++)
+			for (size_t number = 0; number < SIZE_ARRAY; number++)
 			{
-				resultMatrix[row][column] += firstMatrix[row][inner] * secondMatrix[inner][column];
+				resultMatrix[row][column] += firstMatrix[row][number] * secondMatrix[number][column];
 			}
 		}
 	}
