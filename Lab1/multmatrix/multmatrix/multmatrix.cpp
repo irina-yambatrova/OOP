@@ -12,22 +12,22 @@ size_t SIZE_ARRAY = 3;
 vector<vector<double>> GetArrayFromFile(const string & nameOfFile)
 {
 	ifstream inputFile(nameOfFile);
-	vector<vector<double>> firstArray(SIZE_ARRAY);
+	vector<vector<double>> array(SIZE_ARRAY);
 	if (!inputFile.is_open())
 	{
 		cout << "File not found";
 	}
 	for (size_t x = 0; x < SIZE_ARRAY; ++x)
 	{
-		firstArray[x].resize(SIZE_ARRAY);
+		array[x].resize(SIZE_ARRAY);
 		for (size_t y = 0; y < SIZE_ARRAY; ++y)
 		{
 			double number = 0.0;
 			inputFile >> number;
-			firstArray[x][y] = number;
+			array[x][y] = number;
 		}
 	}
-	return firstArray;
+	return array;
 }
 
 vector<vector<double>> MultiplicationOfMatrix(const string & inputFirstFile, const string & inputSecondFile)
