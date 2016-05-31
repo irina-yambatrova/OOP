@@ -54,12 +54,10 @@ BOOST_FIXTURE_TEST_SUITE(Remote_Control, RemoteControlFixture)
 	}
 	BOOST_AUTO_TEST_CASE(can_not_select_channel_when_tv_is_off)
 	{
-		tv.TurnOff();
 		VerifyCommandHandling("SelectChannel 10", none, "");
 	}
 	BOOST_AUTO_TEST_CASE(can_not_select_previous_channel_when_tv_is_off)
 	{
-		tv.TurnOff();
 		VerifyCommandHandling("SelectPreviousChannel", none, "");
 	}
 BOOST_AUTO_TEST_SUITE_END()
