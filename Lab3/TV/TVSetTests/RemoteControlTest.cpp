@@ -66,12 +66,12 @@ struct _after_turn_on_and_select_some_channel : RemoteControlFixture
 {
 	_after_turn_on_and_select_some_channel()
 	{
-		tv.TurnOn();
+		tv.TurnOn(); 
 		tv.SelectChannel(12);
 	}
 };
 BOOST_FIXTURE_TEST_SUITE(after_turn_on_and_select_some_channel, _after_turn_on_and_select_some_channel)
-	BOOST_AUTO_TEST_CASE(can_select_previous_channel_when_tv_is_on)
+	BOOST_AUTO_TEST_CASE(can_select_previous_channel)
 	{
 		VerifyCommandHandling("SelectPreviousChannel", 1, "");
 	}
