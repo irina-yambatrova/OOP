@@ -13,13 +13,13 @@ public:
 	bool HandleCommand();
 
 private:
-	bool TurnOn(std::istream & args);
-	bool TurnOff(std::istream & args);
-	bool SelectedChannel(std::istream & strm);
-	bool GetInfo(std::istream & args);
-	bool SelectedPreviousChannel(std::istream & strm);
+	void TurnOn(std::istream & args);
+	void TurnOff(std::istream & args);
+	void SelectedChannel(std::istream & strm);
+	void GetInfo(std::istream & args);
+	void SelectedPreviousChannel(std::istream & strm);
 private:
-	typedef std::map<std::string, std::function<bool(std::istream & args)>> ActionMap;
+	typedef std::map<std::string, std::function<void(std::istream & args)>> ActionMap;
 
 	CTVSet & m_tv;
 	std::istream & m_input;

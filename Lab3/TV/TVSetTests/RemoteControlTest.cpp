@@ -8,8 +8,7 @@ using namespace std;
 using boost::optional;
 using boost::none;
 
-// Зависимости RemoteControl-а вынесены в родительскую структуру,
-// чтобы гарантировать их создание до конструирования самого remote-контрола
+
 struct RemoteControlDependencies
 {
 	CTVSet tv;
@@ -54,12 +53,13 @@ BOOST_FIXTURE_TEST_SUITE(Remote_Control, RemoteControlFixture)
 	}
 	BOOST_AUTO_TEST_CASE(can_not_select_channel_when_tv_is_off)
 	{
-		VerifyCommandHandling("SelectChannel 10", none, "");
+		VerifyCommandHandling("SelectChannel 10", none, "can't select channel\n");
 	}
 	BOOST_AUTO_TEST_CASE(can_not_select_previous_channel_when_tv_is_off)
 	{
-		VerifyCommandHandling("SelectPreviousChannel", none, "");
+		VerifyCommandHandling("SelectPreviousChannel", none, "can't select previous channel\n");
 	}
+	
 BOOST_AUTO_TEST_SUITE_END()
 
 struct _after_turn_on_and_select_some_channel : RemoteControlFixture

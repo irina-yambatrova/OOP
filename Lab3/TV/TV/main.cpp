@@ -13,7 +13,7 @@ void main()
 
 	while (!cin.eof() && !cin.fail())
 	{
-		cout << "Enter command > ";
+		cout << "Enter command-> ";
 		if (!remoteControl.HandleCommand())
 		{
 			cout << "Unknown command!" << endl;

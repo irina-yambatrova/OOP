@@ -36,35 +36,35 @@ bool CRemoteControl::HandleCommand()
 	auto it = m_actionMap.find(action);
 	if (it != m_actionMap.end())
 	{
-		it->second(strm);
+		it-> second(strm);
 		return true;
 	}
 	return false;
 }
 
-bool CRemoteControl::TurnOn(std::istream & args)
+void CRemoteControl::TurnOn(std::istream & args)
 {
 	m_tv.TurnOn();
 	m_output << "TV is turned on" << endl;
-	return true;
 }
 
-bool CRemoteControl::TurnOff(std::istream & args)
+void CRemoteControl::TurnOff(std::istream & args)
 {
 	m_tv.TurnOff();
 	m_output << "TV is turned off" << endl;
-	return true;
 }
 
-bool CRemoteControl::SelectedChannel(std::istream & strm)
+void CRemoteControl::SelectedChannel(std::istream & strm)
 {
 	int channel;
 	strm >> channel;
-	m_tv.SelectChannel(channel);
-	return true;
+	if (!m_tv.SelectChannel(channel))
+	{
+		m_output << "can't select channel" << endl;
+	}
 }
 
-bool CRemoteControl::GetInfo(std::istream & args)
+void CRemoteControl::GetInfo(std::istream & args)
 {
 	int channel = m_tv.GetChannel();
 	if (channel == 0)
@@ -75,10 +75,12 @@ bool CRemoteControl::GetInfo(std::istream & args)
 	{
 		m_output << channel << endl;
 	}
-	return true;
 }
 
-bool CRemoteControl::SelectedPreviousChannel(std::istream & strm)
+void CRemoteControl::SelectedPreviousChannel(std::istream & strm)
 {
-	return m_tv.SelectPreviousChannel();
+	if (!m_tv.SelectPreviousChannel())
+	{
+		m_output << "can't select previous channel" << endl;
+	}
 }
