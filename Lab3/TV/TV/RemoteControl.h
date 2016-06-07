@@ -16,8 +16,8 @@ private:
 	void TurnOn(std::istream & args);
 	void TurnOff(std::istream & args);
 	void SelectedChannel(std::istream & strm);
-	void GetInfo(std::istream & args);
-	void SelectedPreviousChannel(std::istream & strm);
+	void Info(std::istream & args);
+	void SelectPreviousChannel(std::istream & strm);
 private:
 	typedef std::map<std::string, std::function<void(std::istream & args)>> ActionMap;
 

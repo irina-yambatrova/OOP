@@ -80,28 +80,28 @@ BOOST_FIXTURE_TEST_SUITE(when_turned_on, when_turned_on_)
 BOOST_AUTO_TEST_SUITE_END()
 
 
-struct after_subsequent_turning_on_ : when_turned_on_
-{
-	after_subsequent_turning_on_()
+	struct after_subsequent_turning_on_ : when_turned_on_
 	{
-		tv.SelectChannel(33);
-		tv.TurnOff();
-		tv.TurnOn();
-	}
-};
+		after_subsequent_turning_on_()
+		{
+			tv.SelectChannel(33);
+			tv.TurnOff();
+			tv.TurnOn();
+		}
+	};
 
-BOOST_FIXTURE_TEST_SUITE(after_subsequent_turning_on, after_subsequent_turning_on_)
+	BOOST_FIXTURE_TEST_SUITE(after_subsequent_turning_on, after_subsequent_turning_on_)
 
-BOOST_AUTO_TEST_CASE(restores_last_selected_channel)
-{
-	BOOST_CHECK_EQUAL(tv.GetChannel(), 33);
-}
+		BOOST_AUTO_TEST_CASE(restores_last_selected_channel)
+		{
+			BOOST_CHECK_EQUAL(tv.GetChannel(), 33);
+		}
 
-BOOST_AUTO_TEST_CASE(can_not_select_previous_channel_when_TV_turned_off)
-{
-	tv.TurnOff();
-	BOOST_CHECK(!tv.SelectPreviousChannel());
-	BOOST_CHECK_EQUAL(tv.GetChannel(), 0);
-}
-BOOST_AUTO_TEST_SUITE_END()
+		BOOST_AUTO_TEST_CASE(can_not_select_previous_channel_when_TV_turned_off)
+		{
+			tv.TurnOff();
+			BOOST_CHECK(!tv.SelectPreviousChannel());
+			BOOST_CHECK_EQUAL(tv.GetChannel(), 0);
+		}
+	BOOST_AUTO_TEST_SUITE_END()
 BOOST_AUTO_TEST_SUITE_END()

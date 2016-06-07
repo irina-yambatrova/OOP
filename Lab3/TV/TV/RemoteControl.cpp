@@ -17,8 +17,8 @@ CRemoteControl::CRemoteControl(CTVSet & tv, std::istream & input, std::ostream &
 		{ "TurnOn", bind(&CRemoteControl::TurnOn, this, _1) },
 		{ "TurnOff", bind(&CRemoteControl::TurnOff, this, _1) },
 		{ "SelectChannel", bind(&CRemoteControl::SelectedChannel, this, _1) },
-		{ "GetInfo", bind(&CRemoteControl::GetInfo, this, _1) },
-		{ "SelectPreviousChannel", bind(&CRemoteControl::SelectedPreviousChannel, this, _1) }
+		{ "Info", bind(&CRemoteControl::Info, this, _1) },
+		{ "SelectPreviousChannel", bind(&CRemoteControl::SelectPreviousChannel, this, _1) }
 		
 })
 {
@@ -64,7 +64,7 @@ void CRemoteControl::SelectedChannel(std::istream & strm)
 	}
 }
 
-void CRemoteControl::GetInfo(std::istream & args)
+void CRemoteControl::Info(std::istream & args)
 {
 	int channel = m_tv.GetChannel();
 	if (channel == 0)
@@ -73,11 +73,11 @@ void CRemoteControl::GetInfo(std::istream & args)
 	}
 	else
 	{
-		m_output << channel << endl;
+		m_output << "channel is "<< channel << endl;
 	}
 }
 
-void CRemoteControl::SelectedPreviousChannel(std::istream & strm)
+void CRemoteControl::SelectPreviousChannel(std::istream & strm)
 {
 	if (!m_tv.SelectPreviousChannel())
 	{
