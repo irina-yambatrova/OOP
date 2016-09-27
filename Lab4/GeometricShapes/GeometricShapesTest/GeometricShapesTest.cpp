@@ -8,21 +8,21 @@
 
 
 BOOST_AUTO_TEST_SUITE(Point)
-BOOST_AUTO_TEST_CASE(can_be_generated)
+BOOST_AUTO_TEST_CASE(point_can_be_generated)
 {
 	boost::optional <CPoint> point = CPoint(0, 0, "#00ff00");
 	BOOST_CHECK(point);
 }
-BOOST_AUTO_TEST_CASE(has_zero_perimeter_and_area)
+BOOST_AUTO_TEST_CASE(point_has_zero_perimeter_and_area)
 {
 	CPoint point(1, 1, "#00ff00");
 	BOOST_CHECK_EQUAL(point.GetArea(), 0);
 	BOOST_CHECK_EQUAL(point.GetPerimeter(), 0);
 }
-BOOST_AUTO_TEST_CASE(has_correct_info_about_himself)
+BOOST_AUTO_TEST_CASE(correct_info_about_point)
 {
 	CPoint point(1, 1, "#00ff00");
-	BOOST_CHECK_EQUAL(point.ToString(), "Point <1,1>, P=0, S=0");
+	BOOST_CHECK_EQUAL(point.ToString(), "Point <1,1>, Perimeter=0, Area=0");
 }
 BOOST_AUTO_TEST_SUITE_END()
 
@@ -32,16 +32,16 @@ BOOST_AUTO_TEST_CASE(can_be_generated)
 	boost::optional <CLineSegment> line = CLineSegment(0, 0, 0, 2, "#00ff00");
 	BOOST_CHECK(line);
 }
-BOOST_AUTO_TEST_CASE(has_perimeter_equal_his_length_and_zero_area)
+BOOST_AUTO_TEST_CASE(line_has_perimeter_equal_his_length_and_zero_area)
 {
 	CLineSegment line(1, 1, 1, 4, "#00ff00");
 	BOOST_CHECK_EQUAL(line.GetArea(), 0);
 	BOOST_CHECK_EQUAL(line.GetPerimeter(), 3);
 }
-BOOST_AUTO_TEST_CASE(has_correct_info_about_himself)
+BOOST_AUTO_TEST_CASE(correct_info_about_line)
 {
-	CLineSegment line(0, 0, 0, 2, "#00ff00");
-	BOOST_CHECK_EQUAL(line.ToString(), "Line Segment <<0,0><0,2>>, P=2, S=0");
+	CLineSegment line(0, 0, 0, 4, "#00ff00");
+	BOOST_CHECK_EQUAL(line.ToString(), "Line Segment <<0,0><0,4>>, Perimeter=4, Area=0");
 }
 BOOST_AUTO_TEST_SUITE_END()
 
@@ -51,21 +51,21 @@ BOOST_AUTO_TEST_CASE(can_be_generated)
 	boost::optional <CCircle> circle = CCircle(0, 0, 10, "#00ff00", "#00ff00");
 	BOOST_CHECK(circle);
 }
-BOOST_AUTO_TEST_CASE(has_true_perimeter_and_area)
+BOOST_AUTO_TEST_CASE(circle_has_true_perimeter_and_area)
 {
 	CCircle circle(10, 10, 10, "#00ff00", "#00ff00");
 	BOOST_CHECK_EQUAL(round(circle.GetArea() * 100000) / 100000., 314.15927);
 	BOOST_CHECK_EQUAL(round(circle.GetPerimeter() * 100000) / 100000., 62.83185);
 }
-BOOST_AUTO_TEST_CASE(has_correct_info_about_himself)
+BOOST_AUTO_TEST_CASE(circle_has_correct_info_about_himself)
 {
 	CCircle circle(10, 10, 10, "#00ff00", "#00ff00");
-	BOOST_CHECK_EQUAL(circle.ToString(), "Circle <10,10>, R=10, P=62.8319, S=314.159");
+	BOOST_CHECK_EQUAL(circle.ToString(), "Circle <10,10>, R = 10, Perimeter=62.8319, Area =314.159");
 }
-BOOST_AUTO_TEST_CASE(can_not_have_negative_radius)
+BOOST_AUTO_TEST_CASE(circle_can_not_have_negative_radius)
 {
 	CCircle circle(10, 10, -5, "#00ff00", "#00ff00");
-	BOOST_CHECK_EQUAL(circle.ToString(), "Circle <10,10>, R=0, P=0, S=0");
+	BOOST_CHECK_EQUAL(circle.ToString(), "Circle <10,10>, R = 0, Perimeter=0, Area =0");
 }
 
 BOOST_AUTO_TEST_SUITE_END()
@@ -76,16 +76,16 @@ BOOST_AUTO_TEST_CASE(can_be_generated)
 	boost::optional <CRectangle> rect = CRectangle(0, 5, 10, 5, "#00ff00", "#00ff00");
 	BOOST_CHECK(rect);
 }
-BOOST_AUTO_TEST_CASE(has_true_perimeter_and_area)
+BOOST_AUTO_TEST_CASE(rectangle_has_true_perimeter_and_area)
 {
 	CRectangle rect(0, 0, 10, 10, "#00ff00", "#00ff00");
 	BOOST_CHECK_EQUAL(rect.GetArea(), 100);
 	BOOST_CHECK_EQUAL(rect.GetPerimeter(), 40);
 }
-BOOST_AUTO_TEST_CASE(has_correct_info_about_himself)
+BOOST_AUTO_TEST_CASE(rectangle_has_correct_info_about_himself)
 {
 	CRectangle rect(10, 8, 4, 2, "#00ff00", "#00ff00");
-	BOOST_CHECK_EQUAL(rect.ToString(), "Rectangle <10,8>, W=4, H=2, P=12, S=8");
+	BOOST_CHECK_EQUAL(rect.ToString(), "Rectangle <10,8>, W=4, H=2,Perimeter=12, Area=8");
 }
 BOOST_AUTO_TEST_SUITE_END()
 
@@ -95,16 +95,16 @@ BOOST_AUTO_TEST_CASE(can_be_generated)
 	boost::optional <CTriangle> triangle = CTriangle(0, 8, 1, 2, 4, 6, "#00ff00", "#00ff00");
 	BOOST_CHECK(triangle);
 }
-BOOST_AUTO_TEST_CASE(has_true_perimeter_and_area)
+BOOST_AUTO_TEST_CASE(triangle_has_true_perimeter_and_area)
 {
 	CTriangle triangle(0, 0, 0, 3, 4, 0, "#00ff00", "#00ff00");
 	BOOST_CHECK_EQUAL(triangle.GetArea(), 6);
 	BOOST_CHECK_EQUAL(triangle.GetPerimeter(), 12);
 }
-BOOST_AUTO_TEST_CASE(has_correct_info_about_himself)
+BOOST_AUTO_TEST_CASE(triangle_has_correct_info_about_himself)
 {
 	CTriangle triangle(0, 0, 0, 3, 4, 0, "#00ff00", "#00ff00");
-	BOOST_CHECK_EQUAL(triangle.ToString(), "Triangle <<0,0><0,3><4,0>>, P=12, S=6");
+	BOOST_CHECK_EQUAL(triangle.ToString(), "Triangle <<0,0><0,3><4,0>>, Perimeter=12, Area=6");
 }
 BOOST_AUTO_TEST_SUITE_END()
 

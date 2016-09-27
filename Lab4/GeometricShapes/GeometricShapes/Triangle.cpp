@@ -22,7 +22,7 @@ std::string CTriangle::ToString() const
 	stream << "Triangle <<" << m_firstVertex.GetX() << "," << m_firstVertex.GetY() << ">";
 	stream << "<" << m_secondVertex.GetX() << "," << m_secondVertex.GetY() << ">";
 	stream << "<" << m_thirdVertex.GetX() << "," << m_thirdVertex.GetY() << ">>";
-	stream << ", P=" << GetPerimeter() << ", S=" << GetArea();
+	stream << ", Perimeter=" << GetPerimeter() << ", Area=" << GetArea();
 	return stream.str();
 }
 

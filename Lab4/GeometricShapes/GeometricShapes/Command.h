@@ -9,7 +9,7 @@
 class COperationsWithShapes
 {
 public:
-	COperationsWithShapes(std::istream & input, std::ostream & output, std::vector<std::shared_ptr<IShape>> & shapes);
+	COperationsWithShapes(std::istream & input, std::ostream & outpuzt, std::vector<std::shared_ptr<IShape>> & shapes);
 	bool HandleCommand();
 	void SortByPerimeter();
 	void SortByArea();
@@ -19,7 +19,6 @@ public:
 	std::shared_ptr<IShape> GetCirclePtr(std::istream & strm);
 	std::shared_ptr<IShape> GetRectanglePtr(std::istream & strm);
 	std::shared_ptr<IShape> GetTrianglePtr(std::istream & strm);
-	~COperationsWithShapes();
 private:
 	std::istream & m_input;
 	std::ostream & m_output;

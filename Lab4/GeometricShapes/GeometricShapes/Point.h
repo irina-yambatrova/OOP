@@ -6,7 +6,7 @@ class CPoint final : public IShape
 {
 public:
 	CPoint(int x, int y, std::string const& borderColor);
-	~CPoint() = default;
+
 
 	int GetX()const;
 	int GetY()const;

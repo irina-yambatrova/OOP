@@ -1,12 +1,12 @@
 #include "stdafx.h"
-#include "OperationsWithShapes.h"
+#include "Command.h"
 
 using namespace std;
 
 int main()
 {
 	vector<shared_ptr<IShape>> shapes;
-	cout << "input name of shapes and properties, at the end, enter \"info\"!" << endl;
+	cout << "input name of shapes and properties, for get info about shapes, enter \"info\"!" << endl;
 
 	COperationsWithShapes handle(cin, cout, shapes);
 	while (!cin.eof() && !cin.fail())

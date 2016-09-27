@@ -19,14 +19,6 @@ int CPoint::GetY() const
 	return m_y;
 }
 
-std::string CPoint::ToString() const
-{
-	std::stringstream stream;
-	stream << "Point <" << m_x << "," << m_y << ">";
-	stream << ", P=" << GetPerimeter() << ", S=" << GetArea();
-	return stream.str();
-}
-
 double CPoint::GetArea() const
 {
 	return 0;
@@ -36,6 +28,15 @@ double CPoint::GetPerimeter() const
 {
 	return 0;
 }
+
+std::string CPoint::ToString() const
+{
+	std::stringstream stream;
+	stream << "Point <" << m_x << "," << m_y << ">";
+	stream << ", Perimeter=" << GetPerimeter() << ", Area=" << GetArea();
+	return stream.str();
+}
+
 
 std::string CPoint::GetBorderColor() const
 {

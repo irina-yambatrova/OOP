@@ -1,5 +1,5 @@
 #pragma once
-#include "SolidShape.h"
+#include "ISolidShape.h"
 #include "Point.h"
 #include "LineSegment.h"
 
@@ -16,7 +16,6 @@ public:
 	double GetArea()const override;
 	std::string GetBorderColor()const override;
 	std::string GetColor()const override;
-	~CTriangle() = default;
 private:
 	CPoint m_firstVertex;
 	CPoint m_secondVertex;

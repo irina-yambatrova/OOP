@@ -11,13 +11,7 @@ CRectangle::CRectangle(int x, int y, int width, int height, std::string const& b
 {
 }
 
-std::string CRectangle::ToString() const
-{
-	std::stringstream stream;
-	stream << "Rectangle <" << m_vertex.GetX() << "," << m_vertex.GetY() << ">, W=" << m_width << ", H=" << m_height;
-	stream << ", P=" << GetPerimeter() << ", S=" << GetArea();
-	return stream.str();
-}
+
 
 double CRectangle::GetPerimeter() const
 {
@@ -37,4 +31,12 @@ std::string CRectangle::GetBorderColor() const
 std::string CRectangle::GetColor() const
 {
 	return m_color;
+}
+
+std::string CRectangle::ToString() const
+{
+	std::stringstream stream;
+	stream << "Rectangle <" << m_vertex.GetX() << "," << m_vertex.GetY() << ">, W=" << m_width << ", H=" << m_height;
+	stream << ",Perimeter=" << GetPerimeter() << ", Area=" << GetArea();
+	return stream.str();
 }

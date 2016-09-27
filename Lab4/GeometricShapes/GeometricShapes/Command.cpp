@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "OperationsWithShapes.h"
+#include "Command.h"
 
 using namespace std;
 using namespace std::placeholders;
@@ -20,14 +20,14 @@ COperationsWithShapes::COperationsWithShapes(istream & input, ostream & output, 
 
 void COperationsWithShapes::SortByPerimeter()
 {
-	std::sort(m_shapes.begin(), m_shapes.end(), [](std::shared_ptr<IShape> & first, std::shared_ptr<IShape> & second)
+	std::sort(m_shapes.begin(), m_shapes.end(), [](const std::shared_ptr<IShape> & first, const std::shared_ptr<IShape> & second)
 	{
 		return first->GetPerimeter() > second->GetPerimeter();
 	});
 }
 
 void COperationsWithShapes::SortByArea() {
-	std::sort(m_shapes.begin(), m_shapes.end(), [](std::shared_ptr<IShape> & first, std::shared_ptr<IShape> & second)
+	std::sort(m_shapes.begin(), m_shapes.end(), [](const std::shared_ptr<IShape> & first, const std::shared_ptr<IShape> & second)
 	{
 		return first->GetArea() < second->GetArea();
 	});
@@ -41,7 +41,7 @@ void COperationsWithShapes::GetInfoAndSort()
 	{
 		m_output << it->ToString() << endl;
 	}
-	cout << endl << endl << "Sorting in descending  parameter \n" << endl;
+	cout << endl << "Sorting in descending  parameter \n" << endl;
 	SortByPerimeter();
 	for (auto it : m_shapes)
 	{
@@ -117,6 +117,4 @@ std::shared_ptr<IShape> COperationsWithShapes::GetTrianglePtr(std::istream & str
 	return make_shared<CTriangle>(CTriangle(x1, y1, x2, y2, x3, y3, borderColor, color));
 }
 
-COperationsWithShapes::~COperationsWithShapes()
-{
-}
+
