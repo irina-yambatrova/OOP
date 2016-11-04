@@ -55,4 +55,5 @@ BOOST_AUTO_TEST_CASE(equation_has_one__right_roots)
 	double expectedRoots1[1] = { -1 };
 	CheckRoots(Solve3(-2, 0, 0, 2), 1, expectedRoots1);
 }
+
 BOOST_AUTO_TEST_SUITE_END()
