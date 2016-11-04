@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void IsRootsEqual(const double roots[3], const double expectedRoots[3], const unsigned expectedNumbRoots)
+void AreRootsEqual(const double roots[3], const double expectedRoots[3], const unsigned expectedNumbRoots)
 {
 	for (size_t i = 0; i < expectedNumbRoots; i++)
 	{
@@ -14,7 +14,7 @@ void IsRootsEqual(const double roots[3], const double expectedRoots[3], const un
 void CheckRoots(EquationRoots3 const& result, const unsigned expectedNumbRoots, const double expectedRoots[])
 {
 	BOOST_CHECK_EQUAL(result.numRoots, expectedNumbRoots);
-	IsRootsEqual(result.roots, expectedRoots, expectedNumbRoots);
+	AreRootsEqual(result.roots, expectedRoots, expectedNumbRoots);
 }
 
 BOOST_AUTO_TEST_SUITE(Solve3Test)
@@ -38,11 +38,21 @@ BOOST_AUTO_TEST_CASE(equation_has_one_right_roots)
 
 }
 
-BOOST_AUTO_TEST_CASE(equation_no_has_right_roots)
+BOOST_AUTO_TEST_CASE(equation_has_One_right_roots)
 {
 	double expectedRoots1[1] = {-1};
 	CheckRoots(Solve3(2, 2, 2, 2), 1, expectedRoots1);
-
 }
 
+BOOST_AUTO_TEST_CASE(equation_has_two_same_right_roots)
+{
+	double expectedRoots1[2] = {0, 0 };
+	CheckRoots(Solve3(1, 0, 0, 0), 2, expectedRoots1);
+}
+
+BOOST_AUTO_TEST_CASE(equation_has_one__right_roots)
+{
+	double expectedRoots1[1] = { -1 };
+	CheckRoots(Solve3(-2, 0, 0, 2), 1, expectedRoots1);
+}
 BOOST_AUTO_TEST_SUITE_END()
