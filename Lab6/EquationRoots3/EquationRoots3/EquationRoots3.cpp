@@ -39,6 +39,7 @@ EquationRoots3 Solve3(double a, double b, double c, double d)
 	}
 	else if (s == 0) 
 	{
+		
 		roots.roots[0] = -2 * ((r > 0) ? 1 : ((r < 0) ? -1 : 0)) * sqrt(q) - b / 3;
 		roots.roots[1] = ((r > 0) ? 1 : ((r < 0) ? -1 : 0)) * sqrt(q) - b / 3;
 		roots.numRoots = 2;
@@ -47,6 +48,7 @@ EquationRoots3 Solve3(double a, double b, double c, double d)
 	{
 		if (q == 0)
 		{
+			
 			roots.roots[0] = -pow(d - pow(b, 3) / 27, 1 / 3) - b / 3;
 			roots.numRoots = 1;
 		}
