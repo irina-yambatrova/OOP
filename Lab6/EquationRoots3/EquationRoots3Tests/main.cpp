@@ -1,4 +1,7 @@
-﻿#include "stdafx.h"
+﻿// task01_tests.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/test/output/compiler_log_formatter.hpp>
 

@@ -28,7 +28,7 @@ EquationRoots3 Solve3(double a, double b, double c, double d)
 	double s = pow(q, 3) - pow(r, 2);
 	if (s > 0) 
 	{
-		//проверить
+		
 		double grad = r / sqrt(pow(q, 3));
 		double fi = (1.0 / 3.0) * acos(grad);
 
@@ -47,7 +47,6 @@ EquationRoots3 Solve3(double a, double b, double c, double d)
 	{
 		if (q == 0)
 		{
-			//проверить
 			roots.roots[0] = -pow(d - pow(b, 3) / 27, 1 / 3) - b / 3;
 			roots.numRoots = 1;
 		}
