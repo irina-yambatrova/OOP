@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include <iostream>
 #include <string>
 #include "FindMaxEx.h"
 
@@ -9,6 +10,7 @@ struct Sportsman
 	std::string FIO;
 	int	growth;
 	int	weight;
+
 };
 
 int main()
@@ -20,6 +22,6 @@ int main()
 	std::vector<Sportsman> atlets = { { "ivanov", 190, 100 },{ "sidorov", 180, 95 },{ "petrov", 185, 95 } };
 	Sportsman maxValue;
 	FindMaxEx(atlets, maxValue, [](const Sportsman & firstMan, const Sportsman & secondMan) { return firstMan.weight < secondMan.weight; });
-	std::cout << maxValue.weight << std::endl;
+	std::cout << "Maximum weight: "<< maxValue.weight << std::endl;
 	return 0;
 }

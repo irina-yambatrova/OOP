@@ -14,43 +14,82 @@ struct Sportsman
 	int	weight;
 };
 
+struct MockThrowsWhenCopy
+{
+	MockThrowsWhenCopy()
+	{}
+
+	~MockThrowsWhenCopy()
+	{}
+
+	MockThrowsWhenCopy(MockThrowsWhenCopy const& val)
+	{
+		if (!copied)
+		{
+			copied = true;
+			return;
+		}
+		throw std::exception("cannot copy this object");
+	}
+
+	MockThrowsWhenCopy(MockThrowsWhenCopy && val)
+	{	
+		
+		throw std::exception("cannot move this object");
+	}
+
+	MockThrowsWhenCopy operator=(MockThrowsWhenCopy const& val)
+	{
+		throw std::exception("cannot assign this object");
+	}
+	
+	bool operator<(MockThrowsWhenCopy const& val)const
+	{
+		throw std::exception("cannot compare this object");
+	}
+
+private:
+	bool copied = false;
+};
+
 bool LessByInt(int const& leftArg, int const& rightArg)
 {
 	return leftArg < rightArg;
 }
 
-bool LessByString(std::string const& firstArg, std::string const& secondArg)
+bool Less(MockThrowsWhenCopy const& leftArg, MockThrowsWhenCopy const& rightArg)
 {
-	return firstArg.length() < secondArg.length();
+	return leftArg < rightArg;
+}
+
+bool LessByString(std::string const& leftArg, std::string const& rightArg)
+{
+	return leftArg.length() < rightArg.length();
 }
 
 
 BOOST_AUTO_TEST_SUITE(Tests)
 	
-
-	BOOST_AUTO_TEST_CASE(guarantees_strong_exception_safety)
+	BOOST_AUTO_TEST_CASE(guarantees_strong_exception_safety2)
 	{
-		size_t callCount = 0;
-		auto func = [&](auto const& num1, auto const& num2)
-		{
-			if (callCount == 2)
-			{
-				throw std::runtime_error("Error!");
-			}
-			callCount++;
-			return num1 < num2;
-		};
-
-		int max = 0;
-		try
-		{
-			FindMaxEx({ 1, 2, 3, 4, 5 }, max, func);
-		}
-		catch (...) {};
-		BOOST_CHECK(max != 3);
-		BOOST_CHECK(max == 0);
-
+		vector<MockThrowsWhenCopy> data = { MockThrowsWhenCopy{}, MockThrowsWhenCopy{} };
+		MockThrowsWhenCopy maxValue;
+		BOOST_REQUIRE_THROW(FindMaxEx(data, maxValue, Less), std::exception);
 	}
+
+	BOOST_AUTO_TEST_CASE(guarantees_strong_exception_safety3)
+	{
+		vector<MockThrowsWhenCopy> data = { MockThrowsWhenCopy{}, MockThrowsWhenCopy{} };
+		MockThrowsWhenCopy maxValue;
+		auto oldAddr = std::addressof(maxValue);
+
+		BOOST_REQUIRE_THROW(FindMaxEx(data, maxValue, Less), std::exception);
+
+		auto currentAddr = std::addressof(maxValue);
+
+		BOOST_REQUIRE(oldAddr == currentAddr);
+	}
+
 	BOOST_AUTO_TEST_CASE(check_empty_vector)
 	{
 		int maxValue;
@@ -66,7 +105,7 @@ BOOST_AUTO_TEST_SUITE(Tests)
 		BOOST_CHECK_EQUAL(maxValue, 3);
 	}
 
-	BOOST_AUTO_TEST_CASE(check_int)
+	BOOST_AUTO_TEST_CASE(check_max_int)
 	{
 		int maxValue;
 		std::vector<int> intArr = { -1, 0, 1, 2, 3, 5, 6, 7, 8, 9 };
@@ -75,7 +114,7 @@ BOOST_AUTO_TEST_SUITE(Tests)
 		BOOST_CHECK_EQUAL(maxValue, 9);
 	}
 
-	BOOST_AUTO_TEST_CASE(check_one_element_string)
+	BOOST_AUTO_TEST_CASE(check_one_element_of_type_string)
 	{
 		std::string maxValueString;
 		std::vector<std::string> stringArr = { "one" };
