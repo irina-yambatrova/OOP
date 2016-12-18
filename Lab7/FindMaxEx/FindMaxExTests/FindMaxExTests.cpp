@@ -1,11 +1,7 @@
 #include "stdafx.h"
 #define BOOST_TEST_MODULE Tests
 #include <boost/test/unit_test.hpp>
-#include <boost/test/test_case_template.hpp>
-#include <boost/mpl/list.hpp>
 #include "../FindMaxEx/FindMaxEx.h"
-
-using namespace std;
 
 struct Sportsman
 {
@@ -70,16 +66,16 @@ bool LessByString(std::string const& leftArg, std::string const& rightArg)
 
 BOOST_AUTO_TEST_SUITE(Tests)
 	
-	BOOST_AUTO_TEST_CASE(guarantees_strong_exception_safety2)
+	BOOST_AUTO_TEST_CASE(guarantees_strong_exception_safety_first)
 	{
-		vector<MockThrowsWhenCopy> data = { MockThrowsWhenCopy{}, MockThrowsWhenCopy{} };
+		std::vector<MockThrowsWhenCopy> data = { MockThrowsWhenCopy{}, MockThrowsWhenCopy{} };
 		MockThrowsWhenCopy maxValue;
 		BOOST_REQUIRE_THROW(FindMaxEx(data, maxValue, Less), std::exception);
 	}
 
-	BOOST_AUTO_TEST_CASE(guarantees_strong_exception_safety3)
+	BOOST_AUTO_TEST_CASE(guarantees_strong_exception_safety_second)
 	{
-		vector<MockThrowsWhenCopy> data = { MockThrowsWhenCopy{}, MockThrowsWhenCopy{} };
+		std::vector<MockThrowsWhenCopy> data = { MockThrowsWhenCopy{}, MockThrowsWhenCopy{} };
 		MockThrowsWhenCopy maxValue;
 		auto oldAddr = std::addressof(maxValue);
 
@@ -93,14 +89,14 @@ BOOST_AUTO_TEST_SUITE(Tests)
 	BOOST_AUTO_TEST_CASE(check_empty_vector)
 	{
 		int maxValue;
-		vector<int> arr;
+		std::vector<int> arr;
 		BOOST_CHECK(!FindMaxEx(arr, maxValue, LessByInt));
 	}
 
 	BOOST_AUTO_TEST_CASE(check_one_element_int)
 	{
 		int maxValue;
-		vector<int> arr = { 3 };
+		std::vector<int> arr = { 3 };
 		BOOST_CHECK(FindMaxEx(arr, maxValue, LessByInt));
 		BOOST_CHECK_EQUAL(maxValue, 3);
 	}
