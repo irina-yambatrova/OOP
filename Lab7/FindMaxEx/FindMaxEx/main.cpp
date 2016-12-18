@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include <iostream>
 #include "FindMaxEx.h"
 
 using namespace std;
