@@ -34,9 +34,9 @@ public:
 		, m_end(std::move(arr.m_end))
 		, m_endOfCapacity(std::move(arr.m_endOfCapacity))
 	{
-		/*arr.m_begin = nullptr;
+		arr.m_begin = nullptr;
 		arr.m_end = nullptr;
-		arr.m_endOfCapacity = nullptr;*/
+		arr.m_endOfCapacity = nullptr;
 	}
 
 
@@ -183,6 +183,28 @@ public:
 		}
 	}
 
+	T & GetBack()
+	{
+		assert(GetSize() != 0u);
+		return m_end[-1];
+	}
+
+	const T & GetBack()const
+	{
+		assert(GetSize() != 0u);
+		return m_end[-1];
+	}
+
+	size_t GetSize()const
+	{
+		return m_end - m_begin;
+	}
+
+	size_t GetCapacity()const
+	{
+		return m_endOfCapacity - m_begin;
+	}
+
 	typedef CMyIterator<T, false> iterator;
 	typedef CMyIterator<T, true> reverse_iterator;
 	typedef CMyIterator<const T, false> const_iterator;
@@ -225,27 +247,6 @@ public:
 	const_reverse_iterator rend() const
 	{
 		return const_reverse_iterator(m_begin - 1);
-	}
-
-	T & GetBack()
-	{
-		assert(GetSize() != 0u);
-		return m_end[-1];
-	}
-
-	const T & GetBack()const
-	{
-		assert(GetSize() != 0u);
-		return m_end[-1];
-	}
-
-	size_t GetSize()const
-	{
-		return m_end - m_begin;
-	}
-	size_t GetCapacity()const
-	{
-		return m_endOfCapacity - m_begin;
 	}
 
 	~CMyArray()
