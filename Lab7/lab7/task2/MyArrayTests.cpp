@@ -11,32 +11,32 @@ struct MyStruct
 };
 
 BOOST_FIXTURE_TEST_SUITE(Array_tests, MyStruct)
-BOOST_AUTO_TEST_CASE(get_size_tests)
-{
-	BOOST_CHECK_EQUAL(arr.GetSize(), 0u);
-	arr.Append(0);
-	BOOST_CHECK_EQUAL(arr.GetSize(), 1u);
-	arr.Append(0);
-	BOOST_CHECK_EQUAL(arr.GetSize(), 2u);
-	arr.Append(0);
-	BOOST_CHECK_EQUAL(arr.GetSize(), 3u);
-}
-
-BOOST_AUTO_TEST_SUITE(after_copy_construction)
-BOOST_AUTO_TEST_CASE(has_size_capacity_equal_to_size_of_original_array)
-{
-	for (auto i = 0; i < 6; ++i)
+	BOOST_AUTO_TEST_CASE(get_size_tests)
 	{
-		arr.Append(i);
+		BOOST_CHECK_EQUAL(arr.GetSize(), 0u);
+		arr.Append(0);
+		BOOST_CHECK_EQUAL(arr.GetSize(), 1u);
+		arr.Append(0);
+		BOOST_CHECK_EQUAL(arr.GetSize(), 2u);
+		arr.Append(0);
+		BOOST_CHECK_EQUAL(arr.GetSize(), 3u);
 	}
-	BOOST_CHECK_NE(arr.GetSize(), arr.GetCapacity());
+	
+BOOST_AUTO_TEST_SUITE(after_copy_construction)
+	BOOST_AUTO_TEST_CASE(has_size_capacity_equal_to_size_of_original_array)
+	{
+		for (auto i = 0; i < 6; ++i)
+		{
+			arr.Append(i);
+		}
+		BOOST_CHECK_NE(arr.GetSize(), arr.GetCapacity());
 
-	auto copy(arr);
-	BOOST_CHECK_EQUAL(copy.GetSize(), arr.GetSize());
-	BOOST_CHECK_EQUAL(copy.GetCapacity(), arr.GetSize());
-	BOOST_CHECK_EQUAL(arr.GetSize(), 6u);
-	BOOST_CHECK_EQUAL(arr[2], 2);
-}
+		auto copy(arr);
+		BOOST_CHECK_EQUAL(copy.GetSize(), arr.GetSize());
+		BOOST_CHECK_EQUAL(copy.GetCapacity(), arr.GetSize());
+		BOOST_CHECK_EQUAL(arr.GetSize(), 6u);
+		BOOST_CHECK_EQUAL(arr[2], 2);
+	}
 BOOST_AUTO_TEST_SUITE_END()
 
 BOOST_AUTO_TEST_CASE(assigment_cmyarray)
