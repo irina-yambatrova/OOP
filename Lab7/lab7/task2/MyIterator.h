@@ -15,7 +15,6 @@ public:
 		return *m_current;
 	}
 
-
 	CMyIterator & operator ++()
 	{
 		isReverse ? --m_current : ++m_current;
@@ -64,14 +63,14 @@ public:
 		return (m_isReverse ? m_current - numb : m_current + numb);
 	}
 
-	bool operator ==(CMyIterator const& it)
+	bool operator ==(CMyIterator const& other)
 	{
-		return (*m_current == *it);
+		return (*m_current == *other);
 	}
 
-	bool operator !=(CMyIterator const& it)
+	bool operator !=(CMyIterator const& other)
 	{
-		return (*m_current != *it);
+		return (*m_current != *other);
 	}
 
 	bool operator < (CMyIterator const& other) const
